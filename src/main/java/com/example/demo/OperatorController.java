@@ -1,13 +1,9 @@
 package com.example.demo;
 
-import io.k8s.sparkoperator.v1beta2.models.V1beta2ScheduledSparkApplication;
-import io.k8s.sparkoperator.v1beta2.models.V1beta2ScheduledSparkApplicationList;
 import io.k8s.sparkoperator.v1beta2.models.V1beta2SparkApplication;
 import io.kubernetes.client.openapi.apis.CustomObjectsApi;
 import io.kubernetes.client.util.ModelMapper;
 import io.kubernetes.client.util.Yaml;
-import io.kubernetes.client.util.generic.GenericKubernetesApi;
-import io.kubernetes.client.util.generic.KubernetesApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import io.kubernetes.client.openapi.ApiClient;
@@ -74,14 +70,6 @@ public class OperatorController {
                     null
             );
             return res.toString();
-//            var api = new GenericKubernetesApi<>(V1beta2SparkApplication.class, V1beta2ScheduledSparkApplicationList.class,
-//                    "sparkoperator.k8s.io", "v1beta2",
-//                    "sparkapplications", apiClient);
-//            System.out.println(api.list("default").getObject());
-//            KubernetesApiResponse<V1beta2SparkApplication> res =
-//                    api
-//                            .create(sparkApp)
-//                            .throwsApiException();
         } catch (ApiException e) {
             return String.format("%s %s %s",
                     e.getMessage(), e.getCode(), e.getResponseBody());
